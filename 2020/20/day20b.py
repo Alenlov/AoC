@@ -103,10 +103,10 @@ def containsSeamonster(bigPicture, seaMonster):
                 numMonsters += 1
     return numMonsters
 
-with open("20/input.txt") as f:
+with open("2020/20/input.txt") as f:
 	tiles = f.read().splitlines()
 
-with open("20/seamonster.txt") as f:
+with open("2020/20/seamonster.txt") as f:
     seaMonster = f.read().splitlines()
 
 seaMonsterPattern = []

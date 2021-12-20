@@ -4,12 +4,14 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <algorithm>
+#include <limits>
 
 struct journey {
-        std::string order;
-        std::set<std::string> visited;
-        int distance; 
-        int maxDist = 0;  
+        std::vector<std::string> visited;
+        int distance = 0; 
+        int maxDist = 0;
+        int minDist = std::numeric_limits<int>::max();
 };
 
 std::vector<std::string> splitTask(std::string line){
@@ -28,14 +30,94 @@ std::vector<std::string> splitTask(std::string line){
     return split;
 }
 
+std::map<std::string, std::map<std::string, int>> distMap;
+std::set<std::string> cities;
 
+int shortestPath(journey J) {
+    //std::cout << J.distance << std::endl;
+    if(J.visited.size() == 0) {
+        std::string startCity = *(cities.begin());
+        J.visited.push_back(startCity);
+        std::cout << "Starting city = " << startCity << std::endl;
+    } if(J.visited.size() == cities.size()) {
+        std::string startCity = J.visited.front();
+        std::string endCity = J.visited.back();
+        std::cout << "At the end, started in " << startCity << " ended in " << endCity << std::endl;
+        int newDist = distMap[startCity].at(endCity);
+        if(newDist > J.maxDist){
+            J.maxDist = newDist;
+        }
+        J.distance += newDist;
+        return (J.distance - J.maxDist);
+    }
+    std::string currentCity = J.visited.back();
+    std::map<std::string, int> distFromCurr = distMap[currentCity];
+    std::vector<int> distances;
+    for(std::string const& city : cities) {
+        if(! std::count(J.visited.begin(), J.visited.end(), city) ){
+            journey K = J;
+            K.visited.push_back(city);
+            int newDist = distFromCurr[city];
+            if(newDist > K.maxDist){
+                K.maxDist = newDist;
+            }
+            K.distance += newDist;
+            distances.push_back(shortestPath(K));
+        }
+    }
+    int minDist = std::numeric_limits<int>::max();
+    for(int const& dist : distances){
+        if(dist < minDist){
+            minDist = dist;
+        }
+    }
+    return minDist;
+}
 
+int longestPath(journey J) {
+    if(J.visited.size() == 0) {
+        std::string startCity = *(cities.begin());
+        J.visited.push_back(startCity);
+        std::cout << "Starting city = " << startCity << std::endl;
+    } if(J.visited.size() == cities.size()) {
+        std::string startCity = J.visited.front();
+        std::string endCity = J.visited.back();
+        std::cout << "At the end, started in " << startCity << " ended in " << endCity << std::endl;
+        int newDist = distMap[startCity].at(endCity);
+        if(newDist < J.minDist){
+            J.minDist = newDist;
+        }
+        J.distance += newDist;
+        return (J.distance - J.minDist);
+    }
+    std::string currentCity = J.visited.back();
+    std::map<std::string, int> distFromCurr = distMap[currentCity];
+    std::vector<int> distances;
+    for(std::string const& city : cities) {
+        if(! std::count(J.visited.begin(), J.visited.end(), city) ){
+            journey K = J;
+            K.visited.push_back(city);
+            int newDist = distFromCurr[city];
+            if(newDist < K.minDist){
+                K.minDist = newDist;
+            }
+            K.distance += newDist;
+            distances.push_back(longestPath(K));
+        }
+    }
+    int maxDist = 0;
+    for(int const& dist : distances){
+        if(dist > maxDist){
+            maxDist = dist;
+        }
+    }
+    return maxDist;
+}
 
 
 // Triangle inequality is not satisfied.
 
-std::map<std::string, std::map<std::string, int>> distMap;
-std::set<std::string> cities;
+
 int main(int argc, char *argv[]) {
     
     std::string line;
@@ -68,21 +150,13 @@ int main(int argc, char *argv[]) {
             }
         }
     }
-    std::set<std::string> test1;
-    test1.insert("a");
-    test1.insert("b");
-    std::set<std::string> test2;
-    test2 = test1;
-    test1.insert("c");
-    for (std::string const& person : test1)
-    {
-        std::cout << person << ' ';
-    }
-    std::cout << std::endl;
-    for (std::string const& person : test2)
-    {
-        std::cout << person << ' ';
-    }
-    std::cout << std::endl;
+
+    // Pick a starting point. For each city not in visited create a journey. Keep going until all cities visited. If two journeys have visited the same number of cities save the one with shortest path. Once all cities are visited add the journey back home. Remove the longest trip and return the total distance.
+    journey J, K;
+    int shortestRoute = shortestPath(J);
+
+    int longestRoute = longestPath(K);
+    std::cout << "Answer part A: The shortest path through all cities is " << shortestRoute << std::endl;
+    std::cout << "Answer part B: The longest path through all cities is " << longestRoute << std::endl;
     return 0;
 }

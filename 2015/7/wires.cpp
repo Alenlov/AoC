@@ -178,7 +178,7 @@ int main(int argc, char *argv[]) {
     /*for (auto const& x : wires) {
         std::cout << x.first << ": " << wires[x.first].getValue() << std::endl;
     }
-    std::cout << maxVal << " is the maxVal, xor with " << 123 << " gives " << (maxVal ^ 123)<< std::endl;*/
+    std::cout << maxVal << " is the maxVal, xor with " << 123 << " gives " << (maxVal ^ 123) << std::endl;*/
     int valueA = wires["a"].getValue();
     for (auto const& x: wires) {
         wires[x.first].reset();
