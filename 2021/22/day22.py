@@ -61,8 +61,9 @@ class Cubes:
 cubes = {}
 cubesA = {}
 cubeA = Cubes({'x':[-50,50],'y':[-50,50],'z':[-50,50]},'A')
-time2 = time.time()
+startTime = time.time()
 id = 0
+idA = 0
 for rule in rules:
     state, poses = rule.split()
     poses = [ x.split('=') for x in poses.split(',')]
@@ -71,13 +72,21 @@ for rule in rules:
         vals[pos[0]] = [int(x) for x in pos[1].split('..')]
     newCube = Cubes(vals,state)
     
+    overlapA = cubeA.overlap(newCube)
+    if overlapA:
+        newCubeA = Cubes(overlapA,state)
+        for j in range(idA):
+            cubesA[j].combineWith(newCubeA)
+        if state == 'on':
+            cubesA[idA] = newCubeA
+            idA += 1
+
     for i in range(id):
         cubes[i].combineWith(newCube)
     if state == 'on':
         cubes[id] = newCube
         id += 1
-        if cubeA.overlap(newCube):
-            cubesA[id] = newCube
+
 totVolA = 0
 for c in cubesA:
     totVolA += cubesA[c].volume()
@@ -86,6 +95,7 @@ for c in cubesA:
 totVol = 0
 for c in cubes:
     totVol += cubes[c].volume()
-partBtime = time.time() - time2
+totTime = time.time() - startTime
 print("Answer part A: the total number of cubes in [-50,50]^3 is {}".format(totVolA))
-print("Answer part B: the total number of cubes that are on is {} took {} s".format(totVol,partBtime))
+print("Answer part B: the total number of cubes that are on is {}".format(totVol))
+print("Total time is {:.2f}".format(totTime))
