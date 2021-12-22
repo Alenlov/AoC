@@ -1,4 +1,5 @@
 import math
+import time
 
 class Scanner:
     def __init__(self, id):
@@ -19,9 +20,13 @@ class Scanner:
 
     def overlapping(self, other):
         for i in range(len(self.distances)):
+            if len(self.distances) - i < 11:
+                return None
             for j in range(len(other.distances)):
                 same = {}
                 for k in range(len(self.distances[i])):
+                    if len(self.distances[i]) - k + len(same) < 11:
+                        break
                     dist = self.distances[i][k]
                     if dist > 0 and dist in other.distances[j]:
                         testInd = []
@@ -102,22 +107,14 @@ class Scanner:
                     numFailed += 1
         if numFailed == 0:
             self.transformations[other.id] = (transformMap,transformVector)
-        # for beacon in other.beacons:
-        #     newBeacon = [0]*3
-        #     for i in transformMap:
-        #         s,v = transformMap[i]
-        #         if s == '+':
-        #             newBeacon[i] = beacon[v] + transformVector[i]
-        #         elif s == '-':
-        #             newBeacon[i] = -beacon[v] + transformVector[i]
-        #     newBeacon = tuple(newBeacon)
-        #     if newBeacon not in self.beacons:
-        #         self.beacons.append(newBeacon)
+
 
     def addBeacon(self, relCords):
         self.beacons.append(relCords)
 
 input = open('2021/19/input').read().splitlines()
+
+time1 = time.time()
 
 scanners = {}
 scannerId = 0
@@ -133,7 +130,7 @@ for line in input:
         cords = [int(x) for x in line.split(',')]
         scanners[scannerId].addBeacon(tuple(cords))
 scanners[scannerId].calculateDistances()
-
+time2 = time.time()
 linkedScanners = {}
 for s in scanners:
     for t in scanners:
@@ -147,11 +144,11 @@ for s in scanners:
                 linkedScanners[s].append(t)
                 linkedScanners[t].append(s)
 
-
+time3 = time.time()
 for s in linkedScanners:
     for t in linkedScanners[s]:
         scanners[s].combineScanners(scanners[t])
-
+time4 = time.time()
 finalBeacons = set()
 scannersToAdd = [0]
 scannersAdded = set()
@@ -206,7 +203,7 @@ while len(scannersToAdd) > 0:
         prev = history.pop()
         scannersToAdd.append(prev)
 
-
+time5 = time.time()
 # scannersToAdd = linkedScanners[0].copy()
 # scannersAdded = [0]
 
@@ -233,3 +230,4 @@ for i in range(len(scannerPos)):
             if totDist > maxDist:
                 maxDist = totDist
 print("Answer part B: The maximum dist between scanners is {}".format(maxDist))
+print("Time are input and calc distances {}, find linked {}, find maps {}, place beacons and scanners {}".format(time2-time1,time3-time2,time4-time3,time5-time4))

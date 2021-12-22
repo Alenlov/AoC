@@ -1,3 +1,5 @@
+import time
+
 sensorData = open('2021/20/input').read().splitlines()
 
 diff = [-1,0,1]
@@ -21,7 +23,6 @@ for point in trenchMap:
         for dy in diff:
             neighboorhood.add((x+dx,y+dy))
 
-print(len(key))
 def oneStep(trenchMap, neighboorhood, itr=0):
     itrKey = {'#':'1', '.':'0'}
     pointToSave = '#'
@@ -74,12 +75,11 @@ def printMap(trenchMap):
                 print('.',end='')
         print('')
     print('')
-
+start = time.time()
 for i in range(50):
     trenchMap, neighboorhood = oneStep(trenchMap, neighboorhood, itr = i+1)
     if (i+1) == 2:
         print("Answer part A: the number of lit points is {}".format(len(trenchMap)))
+totTime = time.time()-start
 print("Answer part B: the number of lit points is {}".format(len(trenchMap)))
-
-        
-
+print("Average time per iteration is {}".format(totTime/50))
