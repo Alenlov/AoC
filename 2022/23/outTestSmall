@@ -1,0 +1,94 @@
+
+0 : N
+
+To pos 2,-1 we get 0 | 
+To pos 2,2 we get 2 | 3 | 
+To pos 3,-1 we get 1 | 
+To pos 3,2 we get 4 | 
+Elv 0 at pos 2,-1
+Elv 2 at pos 2,1
+Elv 3 at pos 2,3
+Elv 1 at pos 3,-1
+Elv 4 at pos 3,2
+
+1 : S
+
+To pos 1,1 we get 2 | 
+To pos 2,0 we get 0 | 
+To pos 2,4 we get 3 | 
+To pos 3,0 we get 1 | 
+To pos 4,2 we get 4 | 
+Elv 2 at pos 1,1
+Elv 0 at pos 2,0
+Elv 3 at pos 2,4
+Elv 1 at pos 3,0
+Elv 4 at pos 4,2
+
+2 : W
+
+To pos 0,1 we get 2 | 
+To pos 2,-1 we get 0 | 
+To pos 4,0 we get 1 | 
+Elv 2 at pos 0,1
+Elv 0 at pos 2,-1
+Elv 3 at pos 2,4
+Elv 1 at pos 4,0
+Elv 4 at pos 4,2
+
+3 : E
+
+Elv 2 at pos 0,1
+Elv 0 at pos 2,-1
+Elv 3 at pos 2,4
+Elv 1 at pos 4,0
+Elv 4 at pos 4,2
+
+4 : N
+
+Elv 2 at pos 0,1
+Elv 0 at pos 2,-1
+Elv 3 at pos 2,4
+Elv 1 at pos 4,0
+Elv 4 at pos 4,2
+
+5 : S
+
+Elv 2 at pos 0,1
+Elv 0 at pos 2,-1
+Elv 3 at pos 2,4
+Elv 1 at pos 4,0
+Elv 4 at pos 4,2
+
+6 : W
+
+Elv 2 at pos 0,1
+Elv 0 at pos 2,-1
+Elv 3 at pos 2,4
+Elv 1 at pos 4,0
+Elv 4 at pos 4,2
+
+7 : E
+
+Elv 2 at pos 0,1
+Elv 0 at pos 2,-1
+Elv 3 at pos 2,4
+Elv 1 at pos 4,0
+Elv 4 at pos 4,2
+
+8 : N
+
+Elv 2 at pos 0,1
+Elv 0 at pos 2,-1
+Elv 3 at pos 2,4
+Elv 1 at pos 4,0
+Elv 4 at pos 4,2
+
+9 : S
+
+Elv 2 at pos 0,1
+Elv 0 at pos 2,-1
+Elv 3 at pos 2,4
+Elv 1 at pos 4,0
+Elv 4 at pos 4,2
+30 5
+4 0 | 4 -1
