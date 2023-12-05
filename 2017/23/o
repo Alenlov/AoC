@@ -1,0 +1,10 @@
+Answer part A: 8281
+head:0 a:1 b:0 c:0 d:0 e:0 f:0 g:0 h:0
+head:1 a:1 b:93 c:0 d:0 e:0 f:0 g:0 h:0
+head:2 a:1 b:93 c:93 d:0 e:0 f:0 g:0 h:0
+head:4 a:1 b:93 c:93 d:0 e:0 f:0 g:0 h:0
+head:5 a:1 b:9300 c:93 d:0 e:0 f:0 g:0 h:0
+head:6 a:1 b:109300 c:93 d:0 e:0 f:0 g:0 h:0
+head:7 a:1 b:109300 c:109300 d:0 e:0 f:0 g:0 h:0
+head:8 a:1 b:109300 c:126300 d:0 e:0 f:0 g:0 h:0
+Answer part B: 911

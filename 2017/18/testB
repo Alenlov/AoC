@@ -1,0 +1,9 @@
+set a 1
+set b 2
+snd a
+snd b
+snd p
+rcv a
+rcv b
+rcv c
+rcv d

@@ -1,0 +1,644 @@
+B X 
+H P 
+Y J 
+Z I 
+T U 
+R C 
+S J 
+W J 
+C L 
+L F 
+E G 
+A G 
+V X 
+U O 
+P F 
+O I 
+I F 
+K F 
+J F 
+G X 
+M X 
+F Q 
+Q N 
+D N 
+X N 
+I Q 
+U I 
+D X 
+B W 
+L N 
+U X 
+U J 
+C V 
+G N 
+S K 
+Q D 
+J X 
+V K 
+Z A 
+L M 
+H D 
+V Q 
+L V 
+S D 
+C Q 
+S L 
+E V 
+E P 
+C I 
+O K 
+H V 
+M F 
+K N 
+C X 
+G D 
+E U 
+R L 
+K G 
+W C 
+B L 
+L J 
+U D 
+I G 
+Q X 
+B M 
+T P 
+G Q 
+Y U 
+M D 
+P I 
+I K 
+O M 
+H Z 
+V M 
+P J 
+B U 
+E X 
+M Q 
+W L 
+O J 
+I X 
+J N 
+Y S 
+E D 
+M N 
+E O 
+I D 
+V N 
+R X 
+Z O 
+O X 
+I J 
+S E 
+E Q 
+J Q 
+H Y 
+T G 
+S A 
+P K 
+A D 
+B P 
+Answer part A: BHRTWCYSELPUVZAOIJKGMFQDXN
+26
+N 9
+X 13
+D 9
+Q 8
+F 6
+M 4
+G 5
+J 8
+K 5
+I 5
+O 3
+P 4
+U 4
+V 4
+A 2
+E 1
+L 5
+W 1
+R 0
+C 2
+Z 1
+T 0
+B 0
+Y 1
+S 1
+H 0
+B time 62
+H time 68
+R time 78
+T time 80
+T 80
+R 78
+H 68
+B 62
+1 62
+B
+P U W L M X 
+25
+N 9
+X 12
+D 9
+Q 8
+F 6
+M 3
+G 5
+J 8
+K 5
+I 5
+O 3
+P 3
+U 3
+V 4
+A 2
+E 1
+L 4
+W 0
+R 0
+C 2
+Z 1
+T 0
+Y 1
+S 1
+H 0
+W time 145
+T 80
+W 145
+R 78
+H 68
+1 68
+H
+Y V D Z P 
+24
+N 9
+X 12
+D 8
+Q 8
+F 6
+M 3
+G 5
+J 8
+K 5
+I 5
+O 3
+P 2
+U 3
+V 3
+A 2
+E 1
+L 4
+W 0
+R 0
+C 2
+Z 0
+T 0
+Y 0
+S 1
+Y time 153
+Z time 154
+Z 154
+Y 153
+T 80
+W 145
+R 78
+1 78
+R
+X L C 
+23
+N 9
+X 11
+D 8
+Q 8
+F 6
+M 3
+G 5
+J 8
+K 5
+I 5
+O 3
+P 2
+U 3
+V 3
+A 2
+E 1
+L 3
+W 0
+C 1
+Z 0
+T 0
+Y 0
+S 1
+Z 154
+Y 153
+T 80
+W 145
+1 80
+T
+G P U 
+22
+N 9
+X 11
+D 8
+Q 8
+F 6
+M 3
+G 4
+J 8
+K 5
+I 5
+O 3
+P 1
+U 2
+V 3
+A 2
+E 1
+L 3
+W 0
+C 1
+Z 0
+Y 0
+S 1
+Z 154
+Y 153
+W 145
+1 145
+W
+L C J 
+21
+N 9
+X 11
+D 8
+Q 8
+F 6
+M 3
+G 4
+J 7
+K 5
+I 5
+O 3
+P 1
+U 2
+V 3
+A 2
+E 1
+L 2
+C 0
+Z 0
+Y 0
+S 1
+C time 208
+C 208
+Z 154
+Y 153
+1 153
+Y
+S U J 
+20
+N 9
+X 11
+D 8
+Q 8
+F 6
+M 3
+G 4
+J 6
+K 5
+I 5
+O 3
+P 1
+U 1
+V 3
+A 2
+E 1
+L 2
+C 0
+Z 0
+S 0
+S time 232
+S 232
+C 208
+Z 154
+1 154
+Z
+O A I 
+19
+N 9
+X 11
+D 8
+Q 8
+F 6
+M 3
+G 4
+J 6
+K 5
+I 4
+O 2
+P 1
+U 1
+V 3
+A 1
+E 1
+L 2
+C 0
+S 0
+S 232
+C 208
+1 208
+C
+X I Q V L 
+18
+N 9
+X 10
+D 8
+Q 7
+F 6
+M 3
+G 4
+J 6
+K 5
+I 3
+O 2
+P 1
+U 1
+V 2
+A 1
+E 1
+L 1
+S 0
+S 232
+1 232
+S
+A L D K E J 
+17
+N 9
+X 10
+D 7
+Q 7
+F 6
+M 3
+G 4
+J 5
+K 4
+I 3
+O 2
+P 1
+U 1
+V 2
+A 0
+E 0
+L 0
+A time 293
+E time 297
+L time 304
+L 304
+E 297
+A 293
+1 293
+A
+D G 
+16
+N 9
+X 10
+D 6
+Q 7
+F 6
+M 3
+G 3
+J 5
+K 4
+I 3
+O 2
+P 1
+U 1
+V 2
+E 0
+L 0
+L 304
+E 297
+1 297
+E
+Q O D X U P V G 
+15
+N 9
+X 9
+D 5
+Q 6
+F 6
+M 3
+G 2
+J 5
+K 4
+I 3
+O 1
+P 0
+U 0
+V 1
+L 0
+P time 373
+U time 378
+U 378
+P 373
+L 304
+1 304
+L
+J V M N F 
+14
+N 8
+X 9
+D 5
+Q 6
+F 5
+M 2
+G 2
+J 4
+K 4
+I 3
+O 1
+P 0
+U 0
+V 0
+V time 386
+V 386
+U 378
+P 373
+1 373
+P
+J I K F 
+13
+N 8
+X 9
+D 5
+Q 6
+F 4
+M 2
+G 2
+J 3
+K 3
+I 2
+O 1
+U 0
+V 0
+V 386
+U 378
+1 378
+U
+D X I J O 
+12
+N 8
+X 8
+D 4
+Q 6
+F 4
+M 2
+G 2
+J 2
+K 3
+I 1
+O 0
+V 0
+O time 453
+O 453
+V 386
+1 386
+V
+M Q K N X 
+11
+N 7
+X 7
+D 4
+Q 5
+F 4
+M 1
+G 2
+J 2
+K 2
+I 1
+O 0
+O 453
+1 453
+O
+J M K X I 
+10
+N 7
+X 6
+D 4
+Q 5
+F 4
+M 0
+G 2
+J 1
+K 1
+I 0
+I time 522
+M time 526
+M 526
+I 522
+1 522
+I
+J D X G F Q K 
+9
+N 7
+X 5
+D 3
+Q 4
+F 3
+M 0
+G 1
+J 0
+K 0
+J time 592
+K time 593
+K 593
+J 592
+M 526
+1 526
+M
+Q F N D X 
+8
+N 6
+X 4
+D 2
+Q 3
+F 2
+G 1
+J 0
+K 0
+K 593
+J 592
+1 592
+J
+Q N X F 
+7
+N 5
+X 3
+D 2
+Q 2
+F 1
+G 1
+K 0
+K 593
+1 593
+K
+G N F 
+6
+N 4
+X 3
+D 2
+Q 2
+F 0
+G 0
+F time 659
+G time 660
+G 660
+F 659
+1 659
+F
+Q 
+5
+N 4
+X 3
+D 2
+Q 1
+G 0
+G 660
+1 660
+G
+Q D N X 
+4
+N 3
+X 2
+D 1
+Q 0
+Q time 737
+Q 737
+1 737
+Q
+X D N 
+3
+N 2
+X 1
+D 0
+D time 801
+D 801
+1 801
+D
+X N 
+2
+N 1
+X 0
+X time 885
+X 885
+1 885
+X
+N 
+1
+N 0
+N time 959
+N 959
+1 959
+N
+
+Answer part B: 959
