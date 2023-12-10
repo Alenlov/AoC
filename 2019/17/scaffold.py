@@ -28,7 +28,7 @@ class IntComputer():
 		elif mode == 1:
 			pos = pos
 		elif mode == 2:
-			 pos = self.relBase + self.codeList[pos]
+			pos = self.relBase + self.codeList[pos]
 		else:
 			print('Wrong mode, encountered mode: {}, pos: {}'.format(mode,pos))
 			self.runing = False
