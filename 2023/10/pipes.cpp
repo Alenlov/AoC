@@ -47,7 +47,7 @@ int main(int argc, char const *argv[])
         }
     }
     myfile.close();
-    std::cout << startPos.first << "," << startPos.second << std::endl;
+    //std::cout << startPos.first << "," << startPos.second << std::endl;
 
     std::set<std::pair<int,int>> visited;
     std::queue<std::pair<int,int>> heads;

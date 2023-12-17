@@ -1,0 +1,206 @@
+//std::cout << "We have cond size " << s.cond.size() << " damaged size " << s.damaged.size() << std::endl;
+    if (s.damaged.empty())
+    {
+        //std::cout << "Sluttest!" << std::endl;
+        if (s.cond.empty())
+        { 
+            return 1;
+        }
+        else
+        {
+            bool anyDamaged{false};
+            while (s.cond.size() > 0)
+            {
+                for (char c : s.cond.front())
+                {
+                    if (c == '#')
+                    {
+                        anyDamaged = true;
+                        break;
+                    }
+                }
+                if (anyDamaged) break;
+                s.cond.pop_front();
+            }
+            if (anyDamaged) return 0;
+            else return 1;
+        }
+    }
+    else if (s.cond.empty())
+    {
+        return 0;
+    }
+    std::string cur = s.cond.front();
+    //std::cout << cur << " : " << s.damaged.front() << std::endl;
+    long numCond{0};
+    bool anyDamaged{false};
+    std::size_t firstD = cur.find('#');
+    if (firstD != std::string::npos)
+    {
+        anyDamaged = true;
+    }
+    if (cur.length() == 0)
+    {
+        s.cond.pop_front();
+        numCond += calcCombinations(s);
+    }
+    else if (cur.length() < s.damaged.front())
+    {
+        if (anyDamaged) return 0;
+        else
+        {
+            springMap s2;
+            s2 = s;
+            s2.cond.pop_front();
+            numCond += calcCombinations(s2);
+        }
+    }
+    /* else if (s.damaged.front() == 0)
+    {
+        std::cout << "Kommer jag hit?" << std::endl;
+        if (cur[0] == '?') //okej
+        {
+            springMap s2;
+            s2 = s;
+            s2.cond.front() = cur.substr(1,cur.length());
+            if (s2.cond.front().length() == 0) s2.cond.pop_front();
+            s2.damaged.pop_front();
+            numCond += calcCombinations(s2);
+        }
+        else
+        {
+            return 0;
+        }
+    } */
+    else if (s.damaged.front() == cur.length())
+    {
+        /* Två alternativ */
+        if (!anyDamaged)
+        {
+            springMap s2;
+            s2 = s;
+            s2.cond.pop_front();
+            numCond += calcCombinations(s2); 
+        }
+        springMap s2;
+        s2 = s;
+        s2.cond.pop_front();
+        s2.damaged.pop_front();
+        numCond += calcCombinations(s2);
+    }
+    else
+    {
+        // Formel om alla är ? och lista med siffror
+        // antal ? + 1 - (summan av tal) över antal tal
+
+        // Om alla är # så 1 om det matchar mot antalet!
+        // 79 + 1 - 30 over 25
+        // Om blandat:
+        // Hitta par, index och längd för varje #. Vet att midnre måste vara innan
+        if (!anyDamaged)
+        {
+            //std::cout << "Hit!" << std::endl;
+            long sum{-1};
+            long count{0};
+            int len = cur.length();
+            springMap s3;
+            s3 = s;
+            s3.cond.pop_front();
+            numCond += calcCombinations(s3);
+
+            while (sum + s.damaged.front() < len)
+            {
+                long nextDam = s.damaged.front();
+                sum += nextDam;
+                ++count;
+                s.damaged.pop_front();
+                springMap s2;
+                s2 = s;
+                s2.cond.pop_front();
+                std::cout << count << " " << numCond << " " << sum << " " << cur.length() << " " << s.damaged.size() << " " << s.damaged.front() << std::endl;
+                numCond += binom(cur.length() - sum, count) * calcCombinations(s2);
+                std::cout << count << " " << numCond << " " << sum << " " << cur.length() << " " << s.damaged.size() << " " << s.damaged.front() << std::endl;
+                if (s.damaged.empty()) break;
+            }
+
+        }
+        else
+        {
+            std::cout << "Here?" << std::endl;
+            int distToDmg = firstD;
+            int len = cur.length();
+            int sum{0}, nextDmg{s.damaged.front()}, count{0};
+            std::cout << distToDmg << " " << nextDmg << std::endl;
+            // fall 1: Stoppa in nästa i #
+            if (nextDmg >= distToDmg)
+            {
+                for (int i{0}; i < nextDmg; i++)
+                {
+                    int distToEnd = distToDmg + (nextDmg-1) - i;
+                    if( distToEnd < len )
+                    {
+                        if (distToEnd == len - 1)
+                        {
+                            springMap s2;
+                            s2 = s;
+                            s2.cond.pop_front();
+                            s2.damaged.pop_front();
+                            numCond += calcCombinations(s2);
+                        }
+                        else if (cur[distToEnd+1] == '?')
+                        {
+                            springMap s2;
+                            s2 = s;
+                            if (distToEnd+2 >= len)
+                            {
+                                s2.cond.pop_front();
+                            }
+                            else
+                            {
+                                s2.cond.front() = cur.substr(distToEnd+2,len);
+                            }
+                            s2.damaged.pop_front();
+                            numCond += calcCombinations(s2);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                std::cout << "Here again!" << std::endl;
+                for (int i{nextDmg}; i < distToDmg; i++)
+                {
+                    springMap s2;
+                    s2 = s;
+                    s2.cond.front() = cur.substr(i+1,len);
+                    std::cout << s2.cond.front() << std::endl;
+                    s2.cond.push_front(cur.substr(0,i));
+                    std::cout << s2.cond.front() << std::endl;
+                    numCond += calcCombinations(s2);
+                }
+            }
+            
+        }
+        
+        /* if (cur[0] == '?')
+        {
+            springMap s2;
+            s2 = s;
+            s2.cond.front() = cur.substr(1,cur.length());
+            if (s2.cond.front().length() == 0) s2.cond.pop_front();
+            //std::cout << "Skickar in " << s2.cond.front() << " med " << s2.damaged.front() << std::endl;
+            numCond += calcCombinations(s2);
+            //std::cout << "Numcond " << numCond << std::endl;
+        }
+        // Räkna upp s.damaged.front() antal rutor, se till att nästa är ? och ta bort den!
+        
+        if (cur[s.damaged.front()] == '?')
+        {
+            springMap s2;
+            s2 = s;
+            s2.cond.front() = cur.substr(s.damaged.front()+1);
+            s2.damaged.pop_front();
+            numCond += calcCombinations(s2);
+        } */
+    }
+    return numCond;

@@ -11,7 +11,7 @@ std::vector<std::string> splitLine(std::string line, std::string split = " ")
     std::size_t indx = 0;
     std::size_t newIndx = 0;
 
-    while(newIndx != std::string::npos)
+    while(newIndx != std::string::npos && (indx < line.length()))
     {
         newIndx = line.find(split, indx);
         if((newIndx - indx) > 0)
@@ -37,7 +37,10 @@ int main(int argc, char const *argv[])
     }
     if (myfile.is_open())
     {
-        getline(myfile,line);
+        while(getline(myfile,line))
+        {
+            
+        }
     }
     myfile.close();
     
