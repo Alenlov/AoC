@@ -118,7 +118,7 @@ int main(int argc, char const *argv[])
             char dir = split[0][0];
             long length = std::stol(split[1]);
             std::string color = split[2].substr(2,split[2].length()-3);
-            std::cout << color << std::endl;
+            //std::cout << color << std::endl;
             line l;
             l.start = head;
             head += (dirs[dir]*length);
@@ -160,8 +160,8 @@ int main(int argc, char const *argv[])
         }
     }
     myfile.close();
-    std::cout << lines.size() << " " << leftOut << std::endl;
-    std::cout << linesB.size() << " " << leftOutb << std::endl;
+    //std::cout << lines.size() << " " << leftOut << std::endl;
+    //std::cout << linesB.size() << " " << leftOutb << std::endl;
 
     std::cout << "Answer part A: " << calcArea(lines) << std::endl;
     std::cout << "Answer part B: " << calcArea(linesB) << std::endl;
