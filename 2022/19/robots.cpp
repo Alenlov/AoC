@@ -173,7 +173,7 @@ int main(int argc, char* argv[]){
                 }
             }
         }
-        std::cout << "Using BP " << k << " we got " << curMax << std::endl;
+        //std::cout << "Using BP " << k << " we got " << curMax << std::endl;
         tot += k*curMax;
     }
     std::cout << "Answer part A:" << tot << std::endl;
@@ -258,7 +258,7 @@ int main(int argc, char* argv[]){
                 }
             }
         }
-        std::cout << "Using BP " << k << " we got " << curMax << std::endl;
+        //std::cout << "Using BP " << k << " we got " << curMax << std::endl;
         ansB *= curMax;
         c += 1;
     }

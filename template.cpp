@@ -5,6 +5,11 @@
 #include <utility>
 #include <algorithm>
 
+std::pair<int,int> operator+(std::pair<int,int> lhs, std::pair<int,int> rhs)
+{
+    return {lhs.first+rhs.first,lhs.second+rhs.second};
+}
+
 std::vector<std::string> splitLine(std::string line, std::string split = " ")
 {
     std::vector<std::string> vectorOfStrings;
