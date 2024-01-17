@@ -1,0 +1,5 @@
+vill hitta x,y,z, vx,vy,vz
+så att för varje i = 1...N
+x + t_i vx = x_i + t_i vx_i
+y + t_i vy = y_i + t_i vy_i
+z + t_i vz = z_i + t_i vz_i 

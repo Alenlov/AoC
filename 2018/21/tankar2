@@ -1,0 +1,18 @@
+while true: # start
+  r2 = r1 or 65536
+  r1 = 8725355
+
+  while (true): # inner
+    r5 = r2 and 255
+    r1 = r1 + r5
+    r1 = r1 and 16777215
+    r1 = r1 * 65899
+    r1 = r1 and 16777215
+
+    if (256 > r2):
+      if (r1 == r0):
+        break start
+
+      break inner
+    else:
+      r2 = r2 div 256

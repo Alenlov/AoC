@@ -4,13 +4,14 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 #include <queue>
 #include <set>
+#include <map>
 
 std::vector<std::vector<char>> theMap;
-std::map<char,std::pair<int,int>> dirs {{'D',{1,0}},{'U',{-1,0}},{'R',{0,1}},{'L',{0,-1}}};
-std::map<char, std::pair<int,int>> forced{ {'>',{0,1}}, {'<',{0,-1}}, {'v',{1,0}}, {'^',{-1,0}}  };
+std::unordered_map<char,std::pair<int,int>> dirs {{'D',{1,0}},{'U',{-1,0}},{'R',{0,1}},{'L',{0,-1}}};
+std::unordered_map<char, std::pair<int,int>> forced{ {'>',{0,1}}, {'<',{0,-1}}, {'v',{1,0}}, {'^',{-1,0}}  };
 
 
 std::pair<int,int> operator+(std::pair<int,int> lhs, std::pair<int,int> rhs)
@@ -26,7 +27,7 @@ struct junction
     std::vector<std::pair<int,int>> to, toAll;
 };
 
-std::map<int,junction> junctions;
+std::unordered_map<int,junction> junctions;
 
 std::vector<std::string> splitLine(std::string line, std::string split = " ")
 {
@@ -177,7 +178,7 @@ struct path
 
 
 
-void longestPathB(int cur, int end, std::map<int, bool>& visited, std::map<int, int>& max_path, int length)
+void longestPathB(int cur, int end, std::unordered_map<int, bool>& visited, std::unordered_map<int, int>& max_path, int length)
 {
     if (visited[cur]) return;
     visited[cur] = true;
@@ -192,7 +193,12 @@ void longestPathB(int cur, int end, std::map<int, bool>& visited, std::map<int, 
 
     for (auto [i, l] : junctions[cur].toAll)
     {
-        longestPathB(i, end, visited, max_path, length + l);
+        if (!visited[i])
+        {
+            longestPathB(i, end, visited, max_path, length + l);
+        }
+        //else std::cout << "Pruned" << std::endl;
+        
     }
     visited[cur] = false;
 }
@@ -200,7 +206,7 @@ void longestPathB(int cur, int end, std::map<int, bool>& visited, std::map<int, 
 /* 
 int longestPathB(int cur, int end)
 {
-    std::map<path, int> pathLengths;
+    std::unordered_map<path, int> pathLengths;
     std::queue<path> heads;
     heads.push({cur,{cur}});
     pathLengths[{cur,{cur}}] = 0;
@@ -334,10 +340,11 @@ int main(int argc, char const *argv[])
     int end = id;
     int ansA = longestPath(start, end, {start}, 0);
     std::cout << "Answer part A: " << ansA << std::endl;
-    std::map<int,int> max_path;
-    std::map<int,bool> visited;
+    std::unordered_map<int,int> max_path;
+    std::unordered_map<int,bool> visited;
     int secondLast = junctions[end].toAll[0].first;
-    longestPathB(start, secondLast, visited, max_path, 0);
-    int ansB = max_path[secondLast]+junctions[end].toAll[0].second;
+    int secondStart = junctions[start].toAll[0].first;
+    longestPathB(secondStart, secondLast, visited, max_path, 0);
+    int ansB = max_path[secondLast]+junctions[end].toAll[0].second + junctions[start].toAll[0].second;
     std::cout << "Answer part B: " << ansB << std::endl; 
 }
