@@ -6,25 +6,33 @@
 #include <algorithm>
 #include <regex>
 #include <map>
-
+#include <iterator>
+#include <unordered_map>
+#include <unordered_set>
+#include <set>
 struct nanobot
 {
     long x,y,z,r;
 };
 
-struct range
+struct square
 {
-    long min, max;
-    std::strong_ordering operator<=>(const range& other) const
-    {
-        return std::tie(min, max) <=> std::tie(other.min, other.max);
-    }
+    long x,y,z,dx,dy,dz;
 };
-
 
 bool within(nanobot source, nanobot other)
 {
     return (abs(source.x-other.x) + abs(source.y-other.y) + abs(source.z-other.z)) <= source.r;
+}
+
+bool within(square sq, nanobot bot)
+{
+    
+}
+
+bool overlap(nanobot lhs, nanobot rhs)
+{
+    return (abs(lhs.x-rhs.x) <= (lhs.r + rhs.r)) && (abs(lhs.y-rhs.y) <= (lhs.r + rhs.r)) && (abs(lhs.z-rhs.z) <= (lhs.r + rhs.r));
 }
 
 std::pair<int,int> operator+(std::pair<int,int> lhs, std::pair<int,int> rhs)
@@ -50,10 +58,6 @@ std::vector<std::string> splitLine(std::string line, std::string split = " ")
     return vectorOfStrings;
 }
 
-void fixRanges(std::map<range,int>& ranges)
-{
-    
-}
 
 int main(int argc, char const *argv[])
 {
@@ -70,6 +74,7 @@ int main(int argc, char const *argv[])
         return -1;
     }
     std::vector<nanobot> nanobots;
+    long lx{0}, rx{0}, ly{0}, ry{0}, lz{0}, rz{0};
     if (myfile.is_open())
     {
         while(getline(myfile,line))
@@ -83,6 +88,12 @@ int main(int argc, char const *argv[])
                 n.z = std::stol(m[3]);
                 n.r = std::stol(m[4]);
                 nanobots.push_back(n);
+                if ((n.x - n.r) < lx) lx = n.x - n.r;
+                if ((n.x + n.r) > rx) rx = n.x + n.r;
+                if ((n.y - n.r) < ly) ly = n.y - n.r;
+                if ((n.y + n.r) > ry) ry = n.y + n.r;
+                if ((n.z - n.r) < lz) lz = n.z - n.r;
+                if ((n.z + n.r) > rz) rz = n.z + n.r;
             }
         }
     }
@@ -96,24 +107,25 @@ int main(int argc, char const *argv[])
             maxInd = i;
         }
     }
-
-    std::map<range, int> x, y, z;
+    
+    std::unordered_set<int> allNodes;
     long ansA{0};
     for (int i{0}; i < nanobots.size(); i++)
     {
-        range rx{.min = nanobots[i].x-nanobots[i].r, .max = nanobots[i].x+nanobots[i].r};
-        x[rx] = 1;
-        range ry{.min = nanobots[i].y-nanobots[i].r, .max = nanobots[i].y+nanobots[i].r};
-        y[ry] = 1;
-        range rz{.min = nanobots[i].y-nanobots[i].r, .max = nanobots[i].y+nanobots[i].r};
-        z[rz] = 1;
         if (within(nanobots[maxInd], nanobots[i]))
         {
             ++ansA;
         }
+        
+    }
+    
+    std::cout << "Answer part A: " << ansA << std::endl;
+
+    for (long x{lx}; x < rx; x++)
+    {
+
     }
 
-    std::cout << "Answer part A: " << ansA << std::endl;
     std::cout << nanobots.size() << std::endl;
 
 }
