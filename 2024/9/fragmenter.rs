@@ -80,7 +80,7 @@ fn compress(mut data_files : Vec<Data>, mut free_space : Vec<Data>) -> i64 {
             }
         } 
     }
-    
+    print_current_comp(data_files.clone(), free_space.clone(), compressed.clone() );
     return calc_hash(compressed);
 }
 
@@ -108,6 +108,7 @@ fn compress_b(mut data_files : Vec<Data>, mut free_space : Vec<Data>) -> i64 {
             }
         }
     }
+    print_current_comp(data_files.clone(), free_space.clone(), compressed.clone() );
     return calc_hash(compressed);
 }
 
@@ -137,6 +138,7 @@ fn main() -> std::io::Result<()>{
         pos += val;
         free = !free;
     }
+    print_current(data_files.clone(), free_space.clone());
     let ans_a : i64 = compress(data_files.clone(), free_space.clone());
     let ans_b : i64 = compress_b(data_files.clone(), free_space.clone());
     
